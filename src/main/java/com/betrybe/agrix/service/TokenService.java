@@ -36,4 +36,15 @@ public class TokenService {
         .plus(4, ChronoUnit.HOURS);
   }
 
+  /**
+   * Validates a token and returns the username.
+   */
+
+  public String validateToken(String token) {
+    return JWT.require(algorithm)
+        .build()
+        .verify(token)
+        .getSubject();
+  }
+
 }
